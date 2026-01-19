@@ -42,7 +42,7 @@ public class UiManager : MonoBehaviour
     }
     public void AfficherPrincipale()
     {
-        PrincipalePage.SetActive(false);
+        PrincipalePage.SetActive(true);
         InformationPage.SetActive(false);
     }
 }
