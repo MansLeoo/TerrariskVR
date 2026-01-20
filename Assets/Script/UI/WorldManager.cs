@@ -49,5 +49,12 @@ public class WorldManager : MonoBehaviour
     {
         SceneManager.LoadScene(currentLevel);
     }
-
+    public void gotoPrincipale()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void resetScene()
+    {
+        SceneManager.LoadScene(currentLevel);
+    }
 }
