@@ -1,39 +1,52 @@
-
-
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class DelaiEboulement : MonoBehaviour
 {
     [Header("Réglages")]
-    public Animator monAnimator; // Glissez votre objet ici
-    public string nomDuTrigger = "LanceToi"; // Le nom du paramètre dans l'Animator
-    public float tempsAttente = 10.0f; // Durée en secondes
-    public GameObject objectToDisable; // Glissez votre objet ici
+    public Animator monAnimator;              // Animator à déclencher
+    public string nomDuTrigger = "LanceToi";   // Nom du trigger Animator
+    public float tempsAttente = 10.0f;         // Temps total
+    public GameObject objectToDisable;         // Objet à désactiver à t/2
+    public GameObject objectToEnable;          // Objet à activer à t
 
     void Start()
     {
-        // On lance le compte à rebours dès le début du jeu
-        StartCoroutine(LancerAnimation());
+        StartCoroutine(GestionDelai());
     }
 
-    IEnumerator LancerAnimation()
+    IEnumerator GestionDelai()
     {
-        Debug.Log("Compte à rebours commencé : " + tempsAttente + " secondes.");
+        Debug.Log("Début du compte à rebours : " + tempsAttente + " secondes.");
 
-        // On attend la durée définie
-        yield return new WaitForSeconds(tempsAttente);
+        // Attente jusqu'à la moitié du temps
+        yield return new WaitForSeconds(tempsAttente / 2f);
 
-        // On active l'animation
-        if (monAnimator != null)
+        if (objectToDisable != null)
         {
             objectToDisable.SetActive(false);
+            Debug.Log("Objet désactivé à t/2");
+        }
+
+        // Attente du temps restant
+        yield return new WaitForSeconds(tempsAttente / 2f);
+
+
+
+        if (monAnimator != null)
+        {
             monAnimator.SetTrigger(nomDuTrigger);
-            Debug.Log("Éboulement déclenché !");
+            Debug.Log("Animation déclenchée !");
         }
         else
         {
-            Debug.LogError("Attention : L'Animator n'est pas assigné dans l'inspecteur !");
+            Debug.LogError("Animator non assigné !");
+        }
+        yield return new WaitForSeconds(1.5f);
+        if (objectToEnable != null)
+        {
+            objectToEnable.SetActive(true);
+            Debug.Log("Objet activé à t");
         }
     }
 }

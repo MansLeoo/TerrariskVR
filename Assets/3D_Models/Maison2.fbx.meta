@@ -3,7 +3,152 @@ guid: c4680e19c463f5d468ba745a19d40aae
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BARRIERE
+    second: {fileID: 2100000, guid: 4ec826fb7f35911449a3d3c47b9642a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DessusMur
+    second: {fileID: 2100000, guid: 2d3c0bffe41d6c64f89b8d3320dae22e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DessusMur.001
+    second: {fileID: 2100000, guid: 41b417f282e403945a0545eda3b2e4f1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DessusMur.002
+    second: {fileID: 2100000, guid: bb83ff34b735505409224c7c7a3f4992, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DessusMur.003
+    second: {fileID: 2100000, guid: 4c0d23dabc6d0054c9589bc24a49d9a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DessusMur.004
+    second: {fileID: 2100000, guid: df18a0dd30cbe8849885cc4d9327f82a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DessusMur.005
+    second: {fileID: 2100000, guid: 11462bee410253245a5034ba27918bbe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DessusMur.006
+    second: {fileID: 2100000, guid: 6ba94f47a89bd764d8279aa9e8483446, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DessusMur.007
+    second: {fileID: 2100000, guid: 594d71f7cc67e5d46b1d3f0e64271a71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Escalier
+    second: {fileID: 2100000, guid: 3fd033c59e600ef4291c3d5ecaba0f9f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FENETRE
+    second: {fileID: 2100000, guid: ede80bb919eeb344e9d43282e14d4aeb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MUR
+    second: {fileID: 2100000, guid: 68743eb69bba18348a7ca81bd80a5fdf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MUR.001
+    second: {fileID: 2100000, guid: 5ef5cbab5380f6645a049158743b54ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MUR.002
+    second: {fileID: 2100000, guid: 86c1a786b1cc6dd47843b72dfe73213a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MUR.003
+    second: {fileID: 2100000, guid: 569df179408d42f47b214670e915f082, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MUR.004
+    second: {fileID: 2100000, guid: 6fd23d2d9c98b1f4cabb53db188bff32, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MUR.005
+    second: {fileID: 2100000, guid: 5344372da9861984b9db31c3febfb764, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MUR.006
+    second: {fileID: 2100000, guid: 2fd4c41aab5814d4ab409e41585040ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MUR.007
+    second: {fileID: 2100000, guid: 8d06021aed5043c438dff3936117d924, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MUR.008
+    second: {fileID: 2100000, guid: 0bcbf824c54dad74683ce989f27fdf04, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MUR.009
+    second: {fileID: 2100000, guid: 064cbeedd02812248b4f39eba6979bc2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MUR.010
+    second: {fileID: 2100000, guid: 5e0e3b2aa1146ee4bbb90ce0172f9521, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MUR.011
+    second: {fileID: 2100000, guid: 5bd25b59d3b217045aa2302318553a48, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 90271e79eceadac46a4dddd13570b4cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 8a245e6987ceab945acf87f82911e15f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PORTE
+    second: {fileID: 2100000, guid: 568e3e5b62b8d7c41b0355d853696696, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PorteDeGarage
+    second: {fileID: 2100000, guid: 58aa89e97e2611741a4c077ad34fe052, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Screenshot 2026-01-23 021347
+    second: {fileID: 2100000, guid: 52b4a008069ab8e469b0700199f0020a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TOIT
+    second: {fileID: 2100000, guid: db031f1dc56957541be5d67ac6610eb8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
