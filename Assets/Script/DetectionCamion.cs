@@ -1,69 +1,82 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine;
 
-public class DetecteurCamion : MonoBehaviour
+public class DetecteurCamionSequenceComplete : MonoBehaviour
 {
     [Header("Liaisons")]
-    public Animator animatorCible;      
+    public Animator animatorCible;
+    public GameObject objetADisparaitre; // L'objet qui s'efface au début
+    public GameObject objetAApparaitre;  // Le NOUVEL objet qui apparaît pendant l'anim
 
-    [Header("Réglages")]
-    public string tagRequis = "Camion"; 
+    [Header("Audio")]
+    public AudioSource audioPreparation;
+    public AudioSource audioAnimation;
+
+    [Header("Réglages Temporels")]
+    public float delaiAvantDisparition = 2.0f;
+    public float delaiApresDisparition = 3.0f;
+
+    [Tooltip("Délai après le DEBUT de l'animation avant de montrer l'objet")]
+    public float delaiApparitionPendantAnim = 1.0f;
+    [Tooltip("Durée de visibilité de cet objet")]
+    public float dureeVisibiliteObjet = 5.0f;
+
+    [Header("Paramètres")]
+    public string tagRequis = "Camion";
     public string triggerAnimation = "Ouvrir";
 
     private bool estActive = false;
-    private bool dejaActive = false;
-    [Tooltip("Temps d'attente en secondes avant de lancer l'animation")]
-    public float delaiAvantAnim = 7.0f;
     private bool compteAReboursLance = false;
+
     private void OnTriggerEnter(Collider other)
     {
-        // On vérifie si c'est bien un camion qui entre
         if (other.CompareTag(tagRequis))
         {
             estActive = true;
-            Debug.Log("Zone activée par : " + other.name);
             VerifierEtLancer();
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        // Si le camion sort, on désactive
-        if (other.CompareTag(tagRequis))
-        {
-            estActive = false;
         }
     }
 
     void VerifierEtLancer()
     {
-        // Condition : JE suis activé, L'AUTRE est activé, et on n'a pas déjà lancé le chrono
-        if (estActive && !dejaActive  && !compteAReboursLance)
+        if (estActive && !compteAReboursLance)
         {
-            // Au lieu de lancer l'anim tout de suite, on démarre le chrono
-            StartCoroutine(LancerAvecDelai());
+            StartCoroutine(SequenceComplete());
         }
     }
 
-    // C'est cette fonction spéciale qui gère l'attente
-    IEnumerator LancerAvecDelai()
+    IEnumerator SequenceComplete()
     {
-        // 1. On verrouille pour ne pas relancer le chrono en boucle
         compteAReboursLance = true;
-        Debug.Log("Conditions remplies. Attente de " + delaiAvantAnim + " secondes...");
 
-        // 2. PAUSE : Le code s'arrête ici pendant X secondes
-        yield return new WaitForSeconds(delaiAvantAnim);
+        // --- PHASE 1 : ATTENTE INITIALE ---
+        yield return new WaitForSeconds(delaiAvantDisparition);
 
-        // 3. Après la pause, on vérifie si l'animator existe et on lance
+        // --- PHASE 2 : DISPARITION ---
+        if (objetADisparaitre != null) objetADisparaitre.SetActive(false);
+        if (audioPreparation != null) audioPreparation.Play();
+
+        // --- PHASE 3 : DÉLAI INTERMÉDIAIRE ---
+        yield return new WaitForSeconds(delaiApresDisparition);
+
+        // --- PHASE 4 : ANIMATION & APPARITION ---
         if (animatorCible != null)
         {
             animatorCible.SetTrigger(triggerAnimation);
-            Debug.Log("Délai terminé : Animation lancée !");
-        }
+            if (audioAnimation != null) audioAnimation.Play();
 
-        // Note : On ne remet pas compteAReboursLance à false ici, 
-        // pour que l'animation ne se joue qu'une seule fois.
+            // Attendre 1 seconde avant de faire apparaître le nouvel objet
+            yield return new WaitForSeconds(delaiApparitionPendantAnim);
+            if (objetAApparaitre != null) objetAApparaitre.SetActive(true);
+
+            // Attendre 5 secondes avant de le faire disparaître
+            yield return new WaitForSeconds(dureeVisibiliteObjet);
+            if (objetAApparaitre != null) objetAApparaitre.SetActive(false);
+
+            // Optionnel : On attend la fin totale des 7s de son (si besoin de synchroniser)
+            // yield return new WaitForSeconds(1); 
+
+            if (audioAnimation != null) audioAnimation.Stop();
+        }
     }
 }
